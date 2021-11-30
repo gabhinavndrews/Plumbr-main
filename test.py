@@ -1,6 +1,7 @@
 import pygame
 import sys
 import os
+from coordSetup import *
 
 favicon = pygame.image.load('pipe.png')  # favicon
 pygame.display.set_icon(favicon)
@@ -28,22 +29,48 @@ coords = {'A1': (25, 50), 'A2': (25, 100), 'A3': (25, 150), 'A4': (25, 200), 'A5
           }
 
 level1_pipes = {
-    'A1': straight_pipe, 'A2': curve_pipe, 'A3': straight_pipe, 'A4': t_pipe, 'A5': curve_pipe, 'A6': straight_pipe, 'A7': t_pipe, 'A8': straight_pipe, 'A9': curve_pipe,
-    'B1': straight_pipe, 'B2': curve_pipe, 'B3': straight_pipe, 'B4': t_pipe, 'B5': curve_pipe, 'B6': straight_pipe, 'B7': t_pipe, 'B8': straight_pipe, 'B9': curve_pipe,
-    'C1': straight_pipe, 'C2': curve_pipe, 'C3': straight_pipe, 'C4': t_pipe, 'C5': curve_pipe, 'C6': straight_pipe, 'C7': t_pipe, 'C8': straight_pipe, 'C9': curve_pipe,
-    'D1': straight_pipe, 'D2': curve_pipe, 'D3': straight_pipe, 'D4': t_pipe, 'D5': curve_pipe, 'D6': straight_pipe, 'D7': t_pipe, 'D8': straight_pipe, 'D9': curve_pipe,
-    'E1': straight_pipe, 'E2': curve_pipe, 'E3': straight_pipe, 'E4': t_pipe, 'E5': curve_pipe, 'E6': straight_pipe, 'E7': t_pipe, 'E8': straight_pipe, 'E9': curve_pipe,
-    'F1': straight_pipe, 'F2': curve_pipe, 'F3': straight_pipe, 'F4': t_pipe, 'F5': curve_pipe, 'F6': straight_pipe, 'F7': t_pipe, 'F8': straight_pipe, 'F9': curve_pipe,
-    'G1': straight_pipe, 'G2': curve_pipe, 'G3': straight_pipe, 'G4': t_pipe, 'G5': curve_pipe, 'G6': straight_pipe, 'G7': t_pipe, 'G8': straight_pipe, 'G9': curve_pipe,
-    'H1': straight_pipe, 'H2': curve_pipe, 'H3': straight_pipe, 'H4': t_pipe, 'H5': curve_pipe, 'H6': straight_pipe, 'H7': t_pipe, 'H8': straight_pipe, 'H9': curve_pipe,
-    'I1': straight_pipe, 'I2': curve_pipe, 'I3': straight_pipe, 'I4': t_pipe, 'I5': curve_pipe, 'I6': straight_pipe, 'I7': t_pipe, 'I8': straight_pipe, 'I9': curve_pipe,
-    'J1': straight_pipe, 'J2': curve_pipe, 'J3': straight_pipe, 'J4': t_pipe, 'J5': curve_pipe, 'J6': straight_pipe, 'J7': t_pipe, 'J8': straight_pipe, 'J9': curve_pipe,
-    'K1': straight_pipe, 'K2': curve_pipe, 'K3': straight_pipe, 'K4': t_pipe, 'K5': curve_pipe, 'K6': straight_pipe, 'K7': t_pipe, 'K8': straight_pipe, 'K9': curve_pipe,
-    'L1': straight_pipe, 'L2': curve_pipe, 'L3': straight_pipe, 'L4': t_pipe, 'L5': curve_pipe, 'L6': straight_pipe, 'L7': t_pipe, 'L8': straight_pipe, 'L9': curve_pipe,
-    'M1': straight_pipe, 'M2': curve_pipe, 'M3': straight_pipe, 'M4': t_pipe, 'M5': curve_pipe, 'M6': straight_pipe, 'M7': t_pipe, 'M8': straight_pipe, 'M9': curve_pipe,
-    'N1': straight_pipe, 'N2': curve_pipe, 'N3': straight_pipe, 'N4': t_pipe, 'N5': curve_pipe, 'N6': straight_pipe, 'N7': t_pipe, 'N8': straight_pipe, 'N9': curve_pipe,
-
+    'A1': {straight_pipe, 1}, 'A2': {curve_pipe, 2}, 'A3': {straight_pipe, 3}, 'A4': {t_pipe, 2}, 'A5': {curve_pipe, 2}, 'A6': {straight_pipe, 2}, 'A7': {t_pipe, 2}, 'A8': {straight_pipe, 2}, 'A9': {curve_pipe, 1},
+    'B1': {straight_pipe, 1}, 'B2': {curve_pipe, 2}, 'B3': {straight_pipe, 3}, 'B4': {t_pipe, 2}, 'B5': {curve_pipe, 2}, 'B6': {straight_pipe, 2}, 'B7': {t_pipe, 2}, 'B8': {straight_pipe, 2}, 'B9': {curve_pipe, 1},
+    'C1': {straight_pipe, 1}, 'C2': {curve_pipe, 2}, 'C3': {straight_pipe, 3}, 'C4': {t_pipe, 2}, 'C5': {curve_pipe, 2}, 'C6': {straight_pipe, 2}, 'C7': {t_pipe, 2}, 'C8': {straight_pipe, 2}, 'C9': {curve_pipe, 1},
+    'D1': {straight_pipe, 1}, 'D2': {curve_pipe, 2}, 'D3': {straight_pipe, 3}, 'D4': {t_pipe, 2}, 'D5': {curve_pipe, 2}, 'D6': {straight_pipe, 2}, 'D7': {t_pipe, 2}, 'D8': {straight_pipe, 2}, 'D9': {curve_pipe, 1},
+    'E1': {straight_pipe, 1}, 'E2': {curve_pipe, 2}, 'E3': {straight_pipe, 3}, 'E4': {t_pipe, 2}, 'E5': {curve_pipe, 2}, 'E6': {straight_pipe, 2}, 'E7': {t_pipe, 2}, 'E8': {straight_pipe, 2}, 'E9': {curve_pipe, 1},
+    'F1': {straight_pipe, 1}, 'F2': {curve_pipe, 2}, 'F3': {straight_pipe, 3}, 'F4': {t_pipe, 2}, 'F5': {curve_pipe, 2}, 'F6': {straight_pipe, 2}, 'F7': {t_pipe, 2}, 'F8': {straight_pipe, 2}, 'F9': {curve_pipe, 1},
+    'G1': {straight_pipe, 1}, 'G2': {curve_pipe, 2}, 'G3': {straight_pipe, 3}, 'G4': {t_pipe, 2}, 'G5': {curve_pipe, 2}, 'G6': {straight_pipe, 2}, 'G7': {t_pipe, 2}, 'G8': {straight_pipe, 2}, 'G9': {curve_pipe, 1},
+    'H1': {straight_pipe, 1}, 'H2': {curve_pipe, 2}, 'H3': {straight_pipe, 3}, 'H4': {t_pipe, 2}, 'H5': {curve_pipe, 2}, 'H6': {straight_pipe, 2}, 'H7': {t_pipe, 2}, 'H8': {straight_pipe, 2}, 'H9': {curve_pipe, 1},
+    'I1': {straight_pipe, 1}, 'I2': {curve_pipe, 2}, 'I3': {straight_pipe, 3}, 'I4': {t_pipe, 2}, 'I5': {curve_pipe, 2}, 'I6': {straight_pipe, 2}, 'I7': {t_pipe, 2}, 'I8': {straight_pipe, 2}, 'I9': {curve_pipe, 1},
+    'J1': {straight_pipe, 1}, 'J2': {curve_pipe, 2}, 'J3': {straight_pipe, 3}, 'J4': {t_pipe, 2}, 'J5': {curve_pipe, 2}, 'J6': {straight_pipe, 2}, 'J7': {t_pipe, 2}, 'J8': {straight_pipe, 2}, 'J9': {curve_pipe, 1},
+    'K1': {straight_pipe, 1}, 'K2': {curve_pipe, 2}, 'K3': {straight_pipe, 3}, 'K4': {t_pipe, 2}, 'K5': {curve_pipe, 2}, 'K6': {straight_pipe, 2}, 'K7': {t_pipe, 2}, 'K8': {straight_pipe, 2}, 'K9': {curve_pipe, 1},
+    'L1': {straight_pipe, 1}, 'L2': {curve_pipe, 2}, 'L3': {straight_pipe, 3}, 'L4': {t_pipe, 2}, 'L5': {curve_pipe, 2}, 'L6': {straight_pipe, 2}, 'L7': {t_pipe, 2}, 'L8': {straight_pipe, 2}, 'L9': {curve_pipe, 1},
+    'M1': {straight_pipe, 1}, 'M2': {curve_pipe, 2}, 'M3': {straight_pipe, 3}, 'M4': {t_pipe, 2}, 'M5': {curve_pipe, 2}, 'M6': {straight_pipe, 2}, 'M7': {t_pipe, 2}, 'M8': {straight_pipe, 2}, 'M9': {curve_pipe, 1},
+    'N1': {straight_pipe, 1}, 'N2': {curve_pipe, 2}, 'N3': {straight_pipe, 3}, 'N4': {t_pipe, 2}, 'N5': {curve_pipe, 2}, 'N6': {straight_pipe, 2}, 'N7': {t_pipe, 2}, 'N8': {straight_pipe, 2}, 'N9': {curve_pipe, 1}
 }
+
+straight_pipe_values = (0, 1)
+curved_pipe_values = (0, 1, 2, 3)
+plus_pipe_values = 0
+t_pipe_values = (0, 1, 2, 3)
+
+
+def rotate_tile(tilecoords):
+    oldTile = 0
+    # stores all the tile data including the key and value of coords dict in tiles_list
+    tiles_list = coords.items()
+    for tile in tiles_list:
+        if tile[1] == tilecoords:
+            oldTile = tile[0]
+            break
+    # stores the key and value of the selected pipe from the level1_pipe into a list.
+    pipe_copy = list(level1_pipes[oldTile].copy())
+
+    if(pipe_copy[1] == straight_pipe):
+        pipe_copy = pygame.transform.rotate(pipe_copy[1], 90)
+        for i in straight_pipe_values:
+            if(pipe_copy == i):
+                if i == 3:
+                    level1_pipes[oldTile] = {straight_pipe, 0}
+                else:
+                    level1_pipes[oldTile] = {straight_pipe, i+1}
+    level1_pipes[oldTile] = pipe_copy
 
 
 def new_tile(pipe, tilecoords):
@@ -59,4 +86,38 @@ def new_tile(pipe, tilecoords):
     print(level1_pipes[newTile])
 
 
-new_tile(curve_pipe, (125, 100))
+def rotate_init(pipe, label):
+    #print(pipe, label)
+    new_pipe = 0
+    if (pipe == straight_pipe):
+        # print("true")
+        if(label == 1):
+            new_pipe = pipe
+        elif(label == 2):
+            new_pipe = pygame.transform.rotate(pipe, 90)
+    elif(pipe == curve_pipe or pipe == t_pipe):
+        if(label == 1):
+            new_pipe = pipe
+        elif(label == 2):
+            new_pipe = pygame.transform.rotate(pipe, 90)
+        elif(label == 3):
+            new_pipe = pygame.transform.rotate(pipe, 180)
+        elif(label == 4):
+            new_pipe = pygame.transform.rotate(pipe, 270)
+    elif(pipe == plus_pipe):
+        new_pipe = pipe
+    # print(new_pipe)
+    return new_pipe
+
+
+#new_tile(curve_pipe, (125, 100))
+#rotate_tile((125, 100))
+# print(len(t_pipe_values))
+pipe = level1_pipes['A1']
+label = level1_pipes_values['A1']
+print(pipe)
+print(label)
+new_pipe = rotate_init(pipe, label)
+
+new = rotate_init(pipe, label)
+print(new)
