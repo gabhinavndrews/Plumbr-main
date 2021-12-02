@@ -1,17 +1,14 @@
 import pygame
-from coordSetup import coords, level1_pipes
-from controllers import *
 from assets import *
+from controllers import *
 
 pygame.init()  # initializing pygame
 
-WIDTH, HEIGHT = 750, 500  # width: 900, height: 500
-window = pygame.display.set_mode((WIDTH, HEIGHT))  # creating window
-FPS = 60
-COLOUR = (0, 0, 0)
+pygame.display.set_caption('Plumr')  # creating title of game
 
 
 def main():
+    pipe = curve_pipe
     CLOCK = pygame.time.Clock()
     # game loop
     running = True
@@ -21,11 +18,14 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
             if event.type == pygame.MOUSEBUTTONDOWN:
-                Mouse_pos = pygame.mouse.get_pos()
-                tile_coordinates = map_tile(Mouse_pos)
-                rotate_tile(tile_coordinates)
-        pygame.display.update()
+                pos = pygame.mouse.get_pos()
+                if map_tile(pos) is not None:
+                    tile_coordinates = map_tile(pos)
+                    rotate_tile(tile_coordinates)
+
+        pygame.display.flip()
     pygame.quit()
 
 
